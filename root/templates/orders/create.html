@@ -1,0 +1,16 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+{% load static %}
+        <!--=================== Breadcrumb Section ===================-->
+    <section class="breadcrumb">
+        <div class="container">
+            <ul class="list-inline">
+                <li><a href="#">orders<i class="fa fa-angle-right"></i></a></li>
+                <li class="active">create</li>
+            </ul>
+        </div>
+    </section>
+    <script src="{% static 'assets/basket.js' %}"></script>
+    <script src="{% static 'assets/select.js' %}"></script>
+{% endblock content %}

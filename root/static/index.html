@@ -1,0 +1,66 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+{% load static %}
+        <!--=================== Breadcrumb Section ===================-->
+    <section class="breadcrumb">
+        <div class="container">
+            <ul class="list-inline">
+                <li><a href="#">catalog<i class="fa fa-angle-right"></i></a></li>
+                <li class="active">index</li>
+            </ul>
+        </div>
+    </section>
+<!--=================== Collection Template ===================-->
+    <main class="collection-page">
+        <!--=================== Collections Product Section ===================-->
+        <section class="collection-content gap-2 gap-1">
+            <div class="container-fluid">
+                <div class="col-md-12">
+                    <h1 class="page-header">Products</h1>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="collection-content">
+                    <div class="grid-view">
+                        <div class="col-md-4 col-sm-4 col-xs-12 margin-top-30">
+                            {% for p in products %}
+                            <!--=================== Product ===================-->
+                            <div class="product my-pad">
+                                <a href="/catalog/details">
+                                    {% if p.picture %}
+                                <img src="{{ MEDIA_URL }}{{ p.picture.url }}" alt="" class="img-responsive center-block margin-bottom-20" />
+                                    {% endif %}
+                                </a>
+                                <div class="product-sale"><span>Sale</span></div>
+                                <div class="margin-left-10 margin-right-10 product-price">
+                                    <h4 class="margin-top-10"><a href="#" class="product-title"></a>{{ p.category }}</h4>
+                                    <h4 class="margin-top-10"><a href="#" class="product-title"></a>{{ p.producer }}</h4>
+
+                                    <div class="pull-right padding-bottom-10 font-size-16"><span class="money">${{ p.price }}</span></div>
+                                </div>
+                                <div class="add-to-cart my-cart">
+                                    <input type="hidden" value="{{ p.id }}">
+                                    <a href="/orders/confirm"><button class="btn-ens-action btn-ens-style"><i class="fa fa-shopping-cart"></i> add to cart</button></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12 margin-top-30">
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <style>
+        .my-cart {
+            color: #2a3a4a;
+            margin-left: 10%;
+            }
+    </style>
+    <script src="{% static 'assets/basket.js' %}"></script>
+    <script src="{% static 'assets/select.js' %}"></script>
+    <link href="https://lk.easynetshop.ru/frontend/v5/ens-f95ee2cb.css" rel="stylesheet">
+
+{% endblock content %}

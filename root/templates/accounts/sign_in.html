@@ -1,0 +1,54 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <section class="breadcrumb">
+        <div class="container">
+            <ul class="list-inline">
+                <li><a href="#">accounts<i class="fa fa-angle-right"></i></a></li>
+                <li class="active">sign_in</li>
+            </ul>
+        </div>
+    </section>
+    <main class="login-page">
+        <section class="login-content paira-gap-1 paira-gap-2">
+            <div class="container">
+                <div class="row">
+                    <div id="login-1">
+                        <div class="col-md-12 text-center">
+                            <h1 class="page-header margin-bottom-40">Login</h1>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form id="form-2" action="/accounts/sign_in" method="post">
+                                    {% csrf_token %}
+                                    <p>
+                                        <label for="login">Login:</label><br>
+                                        <input type="text" id="login" name="login" class="form-control margin-bottom-10" required />
+                                        <span id="login_err" class="error"></span>
+                                    </p>
+                                    <p>
+                                        <label for="pass1">Password:</label><br>
+                                        <input type="password" id="pass1" name="pass1" class="form-control margin-bottom-10" required />
+                                        <span id="pass1_err" class="error"></span>
+                                    </p>
+                                        <p style="clear: left">
+                                            <label for="save">Remember</label>&nbsp;
+                                            <input type="checkbox" value="" name="customer[save]" id="save" class="btn btn-default pull-left" style="clear: left">
+                                        </p>
+                                        <button type="submit" class="btn btn-default pull-left">Log In</button>
+                                        <a href="#" class="pull-right" data-toggle="modal" data-target="#paira-forget-password"><h5>Forgot your password?</h5></a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 text-center">
+                            <h4 class="margin-bottom-20 margin-top-40">New Customer?</h4>
+                            <a href="/accounts/sign_up" class="btn btn-primary btn-lg">Create An Account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock content %}

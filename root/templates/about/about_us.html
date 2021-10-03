@@ -1,0 +1,40 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+{% load static %}
+        <!--=================== Breadcrumb Section ===================-->
+        <section class="breadcrumb">
+            <div class="container">
+                <ul class="list-inline">
+                    <li><a href="#">about<i class="fa fa-angle-right"></i></a></li>
+                    <li class="active">about_us</li>
+                </ul>
+            </div>
+        </section>
+        <!--=================== About Template ===================-->
+        {% for q in all_about %}
+        <main class="about-page">
+            <section class="about-content paira-gap-1 paira-gap-2">
+                <div class="container-fluid">
+                    <div class="col-md-12">
+                        <h1 class="page-header">About us</h1>
+                    </div>
+                    <div class="col-md-12">
+                        {% for p in all_about %}
+                        <h4>Why choose <a href="/">TIE</a>
+                        </h4>
+                        <p></p>
+                        <p> </p>
+                        <h4><span>{{ p.title }} <a href="/"> > TIE</a></span></h4>
+                        <div>{{ p.about }}<a href="/"> Tie</a></div>
+                        <p> </p>
+                        <p> </p>
+                        <h4><span><a href="/">TIE</a> customer services</span></h4>
+                        <p><span>*** <a href="TIE">{{ p.service }}</a> </span></p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+        </main>
+        {% endfor %}
+{% endblock content %}

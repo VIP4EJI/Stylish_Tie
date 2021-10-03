@@ -1,0 +1,75 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+		<div id="breadcrumb" class="section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h3 class="breadcrumb-header">{{ title }}</h3>
+						<ul class="breadcrumb-tree">
+							<li><a href="#">cart</a></li>
+							<li class="active">confirm</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="section small">
+			<div class="container">
+				<div class="row">
+                    <!-- CONTENT PLACEHOLDER -->
+					<table id="orders_table" border="1">
+                        <thead>
+                            <tr>
+                                <th>Заказ</th>
+                                <th>Продукт</th>
+                                <th>Цена</th>
+                                <th>Дата</th>
+                                <th>Статус</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cart in user_carts %}
+                                <tr>
+                                    <td>{{ cart.title }}</td>
+                                    <td>{{ cart.product.title }}</td>
+                                    <td>{{ cart.amount }}</td>
+                                    <td>{{ cart.date }}</td>
+                                    <td>{{ cart.status }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+					<p class="p1">
+					<a href="/orders/email" class="btn btn-success">Подтвердить заказ</a>
+					</p>
+                    <!-- /CONTENT PLACEHOLDER -->
+				</div>
+			</div>
+		</div>
+        <style>
+            #orders_table{
+                width: 100%;
+            }
+            #orders_table th {
+                text-align: center;
+                font-size: 10pt;
+                padding: 5px;
+                color: navy;
+                font-weight: bold;
+                font-style: italic;
+            }
+            #orders_table td {
+                text-align: center;
+                font-size: 10pt;
+                padding: 5px;
+                color: darkmagenta;
+                font-weight: bold;
+                font-style: italic;
+            }
+            .p1 {
+                text-align: center;
+                margin-top: 30px;
+            }
+        </style>
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+        <section class="breadcrumb">
+            <div class="container">
+                <ul class="list-inline">
+                    <li><a href="#"{{ title }}>accounts<i class="fa fa-angle-right"></i></a></li>
+                    <li class="active">profile</li>
+                </ul>
+            </div>
+        </section>
+		<div class="section small">
+			<div class="container">
+				<div class="row">
+                    <!-- CONTENT PLACEHOLDER -->
+                    <h4 style="color: gray">
+                        Profile:<br>
+                        <span style="color: blue">
+                            {{ user.username }}
+                        </span>
+                    </h4>
+                    <!-- /CONTENT PLACEHOLDER -->
+				</div>
+			</div>
+		</div>
+{% endblock content %}

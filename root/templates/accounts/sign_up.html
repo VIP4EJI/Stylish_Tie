@@ -1,0 +1,53 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+{% load static %}
+        <section class="breadcrumb">
+            <div class="container">
+                <ul class="list-inline">
+                    <li><a href="#">accounts<i class="fa fa-angle-right"></i></a></li>
+                    <li class="active">sign_up</li>
+                </ul>
+            </div>
+        </section>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1 class="page-header margin-bottom-40">Create Account</h1>
+                    </div>
+                    <div class="col-md-6">
+                        <form id="form-1" action="/accounts/sign_up" method="post" onsubmit="return false">
+                            {% csrf_token %}
+                                <label for="login">Login:</label><br>
+                                <input type="text" id="login" name="login" class="form-control margin-bottom-10"  />
+                                <span id="login_err" class="error"></span>
+                                <label for="pass1">Password:</label><br>
+                                <input type="password" id="pass1" name="pass1" class="form-control margin-bottom-10"  />
+                                <span id="pass1_err" class="error"></span>
+                                <label for="pass2">Repeat Password:</label><br>
+                                <input type="password" id="pass2" name="pass2" class="form-control margin-bottom-10"  />
+                                <span id="pass2_err" class="error"></span>
+                                <label for="email">E-Mail:</label><br>
+                                <input type="email" id="email" name="email" class="form-control margin-bottom-10"  />
+                                <span id="email_err" class="error"></span>
+                            <p>
+                                <input type="submit" id="submit" value="Submit" class="btn btn-success b">
+                                <input type="reset" id="reset" value="Reset" class="btn btn-primary b">
+                                <a href="/catalog" class="btn btn-default pull-right">Return to Store</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+           .error {
+               display: block;
+               margin-top: 5px;
+               color: red;
+               font-style: italic;
+           }
+        </style>
+        <script src="{% static 'assets/sign_up.js' %}"></script>
+{% endblock content %}

@@ -1,0 +1,74 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+        <!--=================== Main Body Content Container ===================-->
+        <div class="paira-container">
+            <section class="breadcrumb">
+                <div class="container">
+                    <ul class="list-inline">
+                        <li><a href="#">catalog<i class="fa fa-angle-right"></i></a></li>
+                        <li class="active">details</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+          <form action="#" method="post" class="product-form">
+          <div class="product__area-user-controls">
+              {% for product in products %}
+            <div class="product__sku">
+              <span data-product-card-sku='{"skuLabel": "арт. "}'>
+              </span>
+            </div>
+
+          </div>
+          <div class="product__area-title">
+            <h1 class="product__title heading">
+                {{ product.title }}
+            </h1>
+          </div>
+
+          <div class="product__area-variants">
+
+            <input type="hidden" name="variant_id" value="379014273" />
+
+          </div>
+
+          <div class="product__price">
+            <span class="product__price-cur" {{ product.price }}></span>
+            <span class="product__price-old" data-product-card-old-price></span>
+          </div>
+          <div class="product__controls">
+            <div class="product__buy-btn-area" id="product-detail-buy-area">
+              <div class="product__buy-btn-area-inner">
+                <div class="add-cart-counter" data-add-cart-counter='{"step": "1"}'>
+                  <button type="button" class="button button_size-l add-cart-counter__btn" data-add-cart-counter-btn>
+                  <span class="add-cart-counter__btn-label">В корзину</span>
+                  <span class="button__icon icon-cart"></span>
+                  </button>
+                  <div class="add-cart-counter__controls">
+                    <button data-add-cart-counter-minus class="button button_size-l  add-cart-counter__controls-btn" type="button">-</button>
+                    <a href="/cart/cart_detail" class="button button_size-l  add-cart-counter__detail">
+                    <span class="add-cart-counter__detail-text">В корзине <span data-add-cart-counter-count></span> шт</span>
+                    <span class="add-cart-counter__detail-dop-text">Перейти</span>
+                    </a>
+                    <button data-add-cart-counter-plus class="button button_size-l  add-cart-counter__controls-btn" type="button">+</button>
+                  </div>
+                </div>
+                <button data-product-card-preorder class="button button_size-l button_wide product__preorder-btn" type="button">Предзаказ</button>
+
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-description static-text" id="product-description">
+              <div class="label-description">Описание</div>
+              <div class="content-description static-text">
+                <p><span>{{ product.about }}</span></p>
+              </div>
+              <span class="button-link more-items js-more-desc hidden">Показать полностью</span>
+            </div>
+
+          </div>
+              {% endfor %}
+    </form>
+{% endblock content %}

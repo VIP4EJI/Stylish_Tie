@@ -1,0 +1,67 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+{% load static %}
+        <!--=================== Breadcrumb Section ===================-->
+    <section class="breadcrumb">
+        <div class="container">
+            <ul class="list-inline">
+                <li><a href="#">cart<i class="fa fa-angle-right"></i></a></li>
+                <li class="active">index</li>
+            </ul>
+        </div>
+    </section>
+    <main class="cart-page">
+        <section class="cart-content paira-gap-2 paira-gap-1">
+            <div class="container-fluid">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <h1 class="page-header ">Shopping Cart</h1>
+                </div>
+                {% for item in cart %}
+                    {% with product=item.product %}
+                <form action="/orders">
+                    <div class="col-md-8 col-sm-7 col-xs-12 margin-top-30">
+                        <div class="cart-item-list">
+                            <h6 class="text-capitalize panel-title cart-title">Product Lists</h6>
+                            <ul class="list-unstyled paira-cart-page-list">
+                                <li>
+                                    <div class="col-md-2 col-sm-3 col-xs-12 margin-top-20">
+                                        <a href="single-product.html">
+                                            {% if product.picture %}
+                                            <img class="img-responsive thumbnail" src="{{ MEDIA_URL }}{{ product.picture.url }}" alt="{{ product.title }}" />
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                    <div class="col-md-10 col-sm-9 col-xs-12 margin-top-20">
+                                        <a href="#" class="margin-top-10"><strong>{{ product.title }}</strong></a>
+                                        <h4 class="margin-top-20 margin-bottom-10"><span class="money">${{ product.price }}</span></h4>
+                                        <label class="margin-top-10">Quantity</label>
+                                        <div class="full-width">
+                                            <input type="number" size="4" name="updates[]" min="0" value="1" class="form-control pull-left paira-cart-quantity-26346847686 margin-bottom-10">
+                                            <a href="#" data-item-id="26346847686" class="btn btn-default pull-left margin-left-10 margin-right-10  margin-bottom-10 paira-cart-page-update"><i class="fa fa-pencil"></i></a>
+                                            <a href="#" class="btn btn-default pull-left paira-cart-page-delete  margin-bottom-10"><i class="fa fa-times"></i></a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% endwith %}
+                {% endfor %}
+                    <aside class="col-md-4 col-sm-5 col-xs-12 margin-top-30">
+                        <figure>
+                            <figcaption><h4 id="count">Sub Total</h4></figcaption>
+                            <div class="cart-sub-total paira-cart-sub-total">
+                                <h2 id="amount"><span class="money">${{ cart.get_total_price }}</span></h2>
+                                <textarea id="note" name="note" class="margin-top-10 margin-bottom-10 form-control" placeholder="Special instructions..."></textarea>
+                                <input type="submit" id="checkout" class="btn btn-default btn-lg btn-block text-uppercase" name="checkout" value="Proceed To Checkout">
+                            </div>
+                        </figure>
+                    </aside>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script src="{% static 'assets/basket.js' %}"></script>
+    <script src="{% static 'assets/select.js' %}"></script>
+{% endblock content %}

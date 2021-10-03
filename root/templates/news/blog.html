@@ -1,0 +1,40 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+        <!--=================== Breadcrumb Section ===================-->
+        <section class="breadcrumb">
+            <div class="container">
+                <ul class="list-inline">
+                    <li><a href="#">news<i class="fa fa-angle-right"></i></a></li>
+                    <li class="active">blog</li>
+                </ul>
+            </div>
+        </section>
+        <!--=================== Blog Template ===================-->
+        <main class="blog-page">
+            <section class="blog-content paira-gap-2">
+                <div class="container-fluid">
+                    <div class="col-md-12 col-sm-12 col-xs-12 paira-gap-1">
+                        <h1 class="page-header">News</h1>
+                    </div>
+                    {% for all_posts in all_posts %}
+                    <article class="margin-top-30 overflow-h col-md-6 col-sm-6 col-xs-12">
+                        <div class="">
+                            <div class="featured-image">
+                                {% if all_posts.picture %}
+                                <img src="{{ MEDIA_URL }}{{ all_posts.picture.url }}" alt="" class="img-responsive center-block margin-bottom-20" />
+                                {% endif %}
+                            </div>
+                            <h3>{{ all_posts.title }}</h3>
+                            <div class="margin-top-15 margin-bottom-15">{{ all_posts.about }}</div>
+                            <p class="blog_date_info">
+                                <span class="margin-right-10"><i class="fa fa-calendar"></i>{{all_posts.date_created}}</span>
+                            </p>
+                            <p class="margin-clear"><a href="{{all_posts.source}}" class="btn-default btn btn-lg margin-top-15">Read More</a></p>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+            </section>
+        </main>
+{% endblock content %}

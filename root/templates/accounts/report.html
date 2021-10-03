@@ -1,0 +1,19 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+        <section class="breadcrumb">
+            <div class="container">
+                <ul class="list-inline">
+                    <li><a href="#">accounts<i class="fa fa-angle-right"></i></a></li>
+                    <li class="active">report</li>
+                </ul>
+            </div>
+        </section>
+        <div class="section small">
+            <div class="container">
+                <div class="row">
+                    <h4 style="color: {{ color_x }}">{{ mess_x }}</h4>
+                </div>
+            </div>
+        </div>
+{% endblock content %}
